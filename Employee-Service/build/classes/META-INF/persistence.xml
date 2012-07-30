@@ -1,0 +1,63 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="com.itc.appollo.employee"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<class>com.itc.appollo.employee.server.domain.EmployeeDto</class>
+
+		<exclude-unlisted-classes />
+
+		<!-- <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode> <validation-mode>NONE</validation-mode> -->
+
+		<properties>
+
+			<!-- A uniform method is used to distinguish between different types of 
+				connection. The common driver identifier is jdbc:hsqldb: followed by a protocol 
+				identifier (mem: file: res: hsql: http: hsqls: https:) then followed by host 
+				and port identifiers in the case of servers, then followed by database identifier. 
+				Additional property / value pairs can be appended to the end of the URL, 
+				separated with semicolons. Aqua Data Studio URL: jdbc:hsqldb:file:/db/serendipitydb 
+				Driver: org.hsqldb.jdbcDriver Driver Location: /tools/common/hsqldb-2.0.1/libhsqldb.jar -->
+
+			<!-- Database connection settings -->
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<!-- <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:serendipitydb" 
+				/> -->
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/DevApp" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="root" />
+
+			<!-- JDBC connection pool (use the built-in) -->
+			<property name="connection.pool_size" value="1" />
+
+			<!-- SQL dialect -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- Enable Hibernate's automatic session context management -->
+			<property name="current_session_context_class" value="thread" />
+
+			<!-- Disable the second-level cache -->
+			<property name="cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+
+			<!-- Echo all executed SQL to stdout -->
+			<!-- <property name="hibernate.show_sql" value="true" /> -->
+			<!-- <property name="hibernate.format_sql" value="true" /> -->
+
+			<!-- Drop and re-create the database schema on startup -->
+			<!-- This property should not be set in PRODUCTION environments -->
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="300" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="3000" />
+		</properties>
+
+	</persistence-unit>
+</persistence>
