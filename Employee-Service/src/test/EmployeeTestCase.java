@@ -21,11 +21,13 @@ public class EmployeeTestCase {
 	@Test
 	public void testCreateAccount() {
 		EmployeeDto emp = new EmployeeDto();		
-		emp.setFirstName("sdsd");
+		emp.setFirstName("abcd");
 		emp.setLastName("sdreresd");
 		emp.setJobRole("Consultant");
 		emp.setProjectDetails("fdsf");
 		emp.setType("permanent");
+		
+		
 		EmployeeDao dao = new EmployeeDao();
 		dao.createEmployee(emp);
 	}
